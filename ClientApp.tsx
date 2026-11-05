@@ -326,7 +326,7 @@ export default function ClientApp() {
 
     return (
       moduleMap[moduleId as keyof typeof moduleMap] || {
-        title: 'Karbon Intelligence',
+        title: 'YYC3 · Intelligence',
         subtitle: 'Your app intelligence platform',
       }
     );

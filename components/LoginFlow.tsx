@@ -140,12 +140,16 @@ export function LoginFlow({ onComplete }: LoginFlowProps) {
       <div className="w-full max-w-2xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mx-auto mb-4">
-            <span className="text-primary-foreground font-semibold text-xl">K</span>
-          </div>
-          <h1 className="text-3xl font-semibold mb-2">Welcome to Karbon</h1>
+          <img
+            src="/yyc3-icons/pwa/icon-192x192.png"
+            alt="YYC3"
+            width={64}
+            height={64}
+            className="w-16 h-16 rounded-xl object-contain mx-auto mb-4"
+          />
+          <h1 className="text-3xl font-semibold mb-2">YYC3 · AI Intelligence Platform</h1>
           <p className="text-muted-foreground text-lg">
-            AI Intelligence Platform for App Developers
+            YanYuCloudCube · App Intelligence for Developers
           </p>
         </div>
 

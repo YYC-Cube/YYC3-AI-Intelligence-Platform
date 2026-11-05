@@ -121,7 +121,7 @@ export function AssistantModule() {
       id: '1',
       type: 'assistant',
       content:
-        "👋 Hello! I'm your Karbon AI Assistant. I can help you analyze app market trends, competitive intelligence, user behavior patterns, and monetization strategies. What would you like to explore today?",
+        "👋 Hello! I'm your YYC3 · AI Assistant. I can help you analyze app market trends, competitive intelligence, user behavior patterns, and monetization strategies. What would you like to explore today?",
       timestamp: new Date(),
       actions: [
         { label: '📈 Market Trends', icon: <TrendingUp className="w-4 h-4" />, onClick: () => {} },
@@ -182,7 +182,7 @@ export function AssistantModule() {
         <CardHeader className="pb-4">
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="flex items-center gap-2">🤖 Karbon AI Assistant</CardTitle>
+              <CardTitle className="flex items-center gap-2">🤖 YYC3 · AI Assistant</CardTitle>
               <p className="text-sm text-muted-foreground mt-1">
                 Powered by GPT-4 • Analyzing 50M+ app data points • 94% accuracy rate
               </p>

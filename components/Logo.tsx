@@ -1,4 +1,8 @@
-import karbonLogoWhite from 'figma:asset/8cea1a267cd31dbfc8ab290dd155e3aaf5db0a96.png';
+/**
+ * @fileoverview YYC3 · Logo（大尺寸展示用）
+ * @description 统一引用 public/yyc3-icons 官方图标，不再使用外部/虚拟资源。
+ */
+const BRAND_ICON = '/yyc3-icons/pwa/icon-512x512.png';
 
 interface LogoProps {
   size?: 'sm' | 'default' | 'lg' | 'xl' | 'hero' | 'mega' | 'ultra';
@@ -7,34 +11,13 @@ interface LogoProps {
 
 export function Logo({ size = 'default', className = '' }: LogoProps) {
   const sizeConfig = {
-    sm: {
-      height: 'h-6', // 24px
-      width: 'w-auto',
-    },
-    default: {
-      height: 'h-8', // 32px
-      width: 'w-auto',
-    },
-    lg: {
-      height: 'h-12', // 48px
-      width: 'w-auto',
-    },
-    xl: {
-      height: 'h-20', // 80px
-      width: 'w-auto',
-    },
-    hero: {
-      height: 'h-32', // 128px
-      width: 'w-auto',
-    },
-    mega: {
-      height: 'h-40', // 160px
-      width: 'w-auto',
-    },
-    ultra: {
-      height: 'h-60', // 240px
-      width: 'w-auto',
-    },
+    sm: { height: 'h-6' },
+    default: { height: 'h-8' },
+    lg: { height: 'h-12' },
+    xl: { height: 'h-20' },
+    hero: { height: 'h-32' },
+    mega: { height: 'h-40' },
+    ultra: { height: 'h-60' },
   };
 
   const config = sizeConfig[size];
@@ -42,9 +25,9 @@ export function Logo({ size = 'default', className = '' }: LogoProps) {
   return (
     <div className={`flex items-center justify-center ${className}`}>
       <img
-        src={karbonLogoWhite}
-        alt="Karbon"
-        className={`${config.height} ${config.width} object-contain bg-transparent`}
+        src={BRAND_ICON}
+        alt="YYC3"
+        className={`${config.height} w-auto object-contain bg-transparent`}
       />
     </div>
   );

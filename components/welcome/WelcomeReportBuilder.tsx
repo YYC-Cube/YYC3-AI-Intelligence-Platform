@@ -160,7 +160,7 @@ export function WelcomeReportBuilder({
       month: 'long',
       day: 'numeric',
     }),
-    platform: 'Karbon Intelligence Platform',
+    platform: 'YYC3 · AI Intelligence Platform',
     executiveSummary: `The ${safeSelectedGenre.name?.toLowerCase() || 'app category'} app market represents a ${(safeSelectedGenre.marketSize as string) || 'significant'} opportunity with real intelligence from ${safeCompetitors.length} active competitors. Analysis reveals significant revenue disparities (${safeCompetitors.length > 0 ? Math.min(...safeCompetitors.map((c: AppData) => (c.rpd as number) || 0)).toFixed(2) : '0.00'}x to ${topRpd.toFixed(2)}x RPD) and untapped localization opportunities in premium markets.`,
     keyFindings: [
       `Revenue Range: $62K - $1.3M monthly across ${safeCompetitors.length} analyzed apps`,

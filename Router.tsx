@@ -1,11 +1,11 @@
 /**
- * @fileoverview YYC³ AI Intelligence Platform - Route Configuration
+ * @fileoverview YYC3 AI Intelligence Platform - Route Configuration
  * @description Centralized routing with lazy-loaded modules and enterprise/client splits
  * @audit-fix [C1-FIX] — Route system restructuring for full URL reachability
  * @audit-phase P0
  * @audit-date 2026-04-21
  * @version 1.2.0
- * @author YYC³ Team
+ * @author YYC3 Team
  */
 import React, { Suspense } from 'react';
 import {
@@ -53,7 +53,7 @@ const LoginFlowWrapper = () => {
   const redirectTo = new URLSearchParams(location.search).get('redirect') || '/client';
 
   const handleComplete = () => {
-    setSession({ appName: 'YYC³ Workspace' });
+    setSession({ appName: 'YYC3 Workspace' });
     window.location.href = redirectTo;
   };
   return <LoginFlow onComplete={handleComplete} />;

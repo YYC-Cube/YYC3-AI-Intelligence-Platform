@@ -109,11 +109,15 @@ export function Sidebar({ activeModule, onModuleChange }: SidebarProps) {
       {/* Header */}
       <div className="p-6 border-b border-sidebar-border">
         <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 bg-sidebar-primary rounded-lg flex items-center justify-center">
-            <span className="text-sidebar-primary-foreground font-semibold">K</span>
-          </div>
+          <img
+            src="/yyc3-icons/pwa/icon-192x192.png"
+            alt="YYC3"
+            width={32}
+            height={32}
+            className="w-8 h-8 rounded-lg object-contain"
+          />
           <div>
-            <h1 className="font-semibold text-sidebar-foreground">Karbon</h1>
+            <h1 className="font-semibold text-sidebar-foreground">YYC3 ·</h1>
             <p className="text-xs text-sidebar-foreground/60">Admin</p>
           </div>
         </div>
@@ -121,7 +125,7 @@ export function Sidebar({ activeModule, onModuleChange }: SidebarProps) {
         <div className="bg-sidebar-accent rounded-lg p-3">
           <div className="flex items-center justify-between mb-1">
             <span className="font-medium text-sm text-sidebar-accent-foreground">
-              Enterprise Platform
+              YYC3 · Enterprise
             </span>
             <Badge variant="secondary" className="text-xs">
               Pro

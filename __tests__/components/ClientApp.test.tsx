@@ -46,7 +46,7 @@ describe('ClientApp 路由即状态（深链还原）', () => {
     renderAt('/client/unknown-module');
 
     expect(
-      screen.getByRole('heading', { level: 1, name: 'Karbon Intelligence' })
+      screen.getByRole('heading', { level: 1, name: 'YYC3 · Intelligence' })
     ).toBeInTheDocument();
   });
 });

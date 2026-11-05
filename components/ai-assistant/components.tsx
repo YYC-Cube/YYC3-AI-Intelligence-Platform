@@ -1,13 +1,13 @@
 /**
- * @fileoverview YYC³ AI Assistant - UI 子组件 + 自定义 Hooks
+ * @fileoverview YYC3 AI Assistant - UI 子组件 + 自定义 Hooks
  * @description Adapted from docs/AI-Dev/AIAssistant/components.tsx — v3.0
  * @version 1.0.0
- * @author YYC³ Team
+ * @author YYC3 Team
  */
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 // ============================================================
-// YYCLogo - YYC³ 脑波 SVG 图标
+// YYCLogo - 统一引用 public/yyc3-icons 官方图标
 // ============================================================
 
 export function YYCLogo({ size = 28, className = '' }: { size?: number; className?: string }) {
@@ -16,26 +16,15 @@ export function YYCLogo({ size = 28, className = '' }: { size?: number; classNam
       className={`flex items-center justify-center ${className}`}
       style={{ width: size, height: size }}
     >
-      <svg
-        width={size * 0.7}
-        height={size * 0.7}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        style={{ color: '#ffffff' }}
-      >
-        <path d="M12 2a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z" fill="rgba(0,212,255,0.3)" />
-        <path d="M8 14a4 4 0 0 0 8 0" fill="none" />
-        <circle cx="12" cy="17" r="5" fill="rgba(0,212,255,0.15)" />
-        <path d="M12 12v3" stroke="rgba(0,212,255,0.6)" />
-        <path d="M10 13l2 2 2-2" stroke="rgba(0,212,255,0.6)" />
-        <circle cx="18" cy="5" r="1" fill="#00d4ff" />
-        <circle cx="20" cy="9" r="0.7" fill="#7b2ff7" />
-        <circle cx="5" cy="7" r="0.7" fill="#00ff88" />
-      </svg>
+      <img
+        src="/yyc3-icons/pwa/icon-192x192.png"
+        alt="YYC3"
+        width={size}
+        height={size}
+        className="rounded-md object-contain"
+        loading="eager"
+        decoding="async"
+      />
     </div>
   );
 }

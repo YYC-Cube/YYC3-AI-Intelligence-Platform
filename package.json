@@ -1,7 +1,7 @@
 {
   "name": "yyc3-ai-intelligence-platform",
   "version": "1.0.0",
-  "description": "YYC³ AI Intelligence Platform - Enterprise-grade analytics and intelligence platform for mobile app developers",
+  "description": "YYC3 · AI Intelligence Platform — Enterprise-grade analytics and intelligence platform for mobile app developers",
   "type": "module",
   "scripts": {
     "dev": "vite --port 3200",
@@ -152,10 +152,11 @@
     "intelligence",
     "yyc3",
     "karbon",
+    "yan yu cloud cube",
     "app-store-optimization",
     "market-intelligence"
   ],
-  "author": "YYC³ Team",
+  "author": "YanYuCloudCube Team",
   "license": "MIT",
   "lint-staged": {
     "*.{ts,tsx}": [

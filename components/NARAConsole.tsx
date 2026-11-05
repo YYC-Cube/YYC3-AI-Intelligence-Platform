@@ -1,11 +1,11 @@
 /**
- * @fileoverview YYC³ NARA Console - AI Operating System Mode Switcher
+ * @fileoverview YYC3 NARA Console - AI Operating System Mode Switcher
  * @description Central hub for NARA modes (Home/Chat/Loop/System) with lazy loading
  * @audit-fix [C2-FIX] [W6-FIX] — Replaced synchronous imports with lazy-loaded components
  * @audit-phase P0
  * @audit-date 2026-04-21
  * @version 1.1.0
- * @author YYC³ Team
+ * @author YYC3 Team
  */
 import { Home, Languages, Layout, MessageSquare, RefreshCw } from 'lucide-react';
 import { Suspense, useState } from 'react';
@@ -25,7 +25,7 @@ type Language = 'zh' | 'en';
 
 const translations = {
   zh: {
-    title: 'NARA',
+    title: 'YYC3 · NARA',
     subtitle: 'AI 操作系统',
     status: '在线',
     tabs: {
@@ -36,7 +36,7 @@ const translations = {
     },
   },
   en: {
-    title: 'NARA',
+    title: 'YYC3 · NARA',
     subtitle: 'AI Operating System',
     status: 'Online',
     tabs: {

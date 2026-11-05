@@ -102,11 +102,15 @@ export function KarbonWelcomeCheck({
         <div className="max-w-4xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-semibold">K</span>
-              </div>
+              <img
+                src="/yyc3-icons/pwa/icon-192x192.png"
+                alt="YYC3"
+                width={32}
+                height={32}
+                className="w-8 h-8 rounded-lg object-contain"
+              />
               <div>
-                <h1 className="font-semibold">Karbon Welcome Check</h1>
+                <h1 className="font-semibold">YYC3 · 欢迎引导</h1>
                 <p className="text-sm text-muted-foreground">
                   Genre Intelligence Analysis for {appData?.name || 'Your App'}
                 </p>
@@ -170,7 +174,7 @@ export function KarbonWelcomeCheck({
       {/* Footer */}
       <div className="text-center py-6">
         <p className="text-sm text-muted-foreground">
-          Karbon Intelligence Platform • Comprehensive Market Analysis
+          YYC3 · AI Intelligence Platform • Comprehensive Market Analysis
         </p>
       </div>
     </div>

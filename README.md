@@ -3,8 +3,8 @@
     <source media="(prefers-color-scheme: dark)" srcset="./public/Family-001.png">
     <img
       src="./public/Family-001.png"
-      alt="YYC³ Family — YYC³ AI Intelligence Platform"
-      title="YYC³ Family · YanYuCloudCube"
+      alt="YYC3 Family — YYC3 · AI Intelligence Platform"
+      title="YYC3 Family · YanYuCloudCube"
       width="100%"
       loading="eager"
       decoding="async"
@@ -22,8 +22,8 @@
 
 <h1 align="center">
   <a href="https://ai.yyc3.fun" target="_blank" rel="noopener noreferrer">
-    <img src="./public/yyc3-icons/favicon/favicon-96x96.png" width="32" height="32" alt="YYC³ Logo" style="vertical-align: middle; margin-right: 8px; border-radius: 6px;" />
-    YYC³ AI Intelligence Platform
+    <img src="./public/yyc3-icons/favicon/favicon-96x96.png" width="32" height="32" alt="YYC3 Logo" style="vertical-align: middle; margin-right: 8px; border-radius: 6px;" />
+    YYC3 · AI Intelligence Platform
   </a>
 </h1>
 
@@ -46,7 +46,7 @@
   </a>
   &nbsp;
   <a href="https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform" target="_blank" rel="noopener noreferrer">
-    <img src="https://img.shields.io/badge/GitHub-YYC³%20Family-black?style=for-the-badge&logo=github&logoColor=white" alt="GitHub: YYC-Cube" />
+    <img src="https://img.shields.io/badge/GitHub-YYC3%20Family-black?style=for-the-badge&logo=github&logoColor=white" alt="GitHub: YYC-Cube" />
   </a>
 </p>
 
@@ -64,7 +64,7 @@
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge&logo=open-source-initiative" />
   <img alt="Version: 1.0.0" src="https://img.shields.io/badge/Version-1.0.0-0C70F2.svg?style=for-the-badge&logo=semver" />
   <img alt="Status: Stable" src="https://img.shields.io/badge/Status-Stable-22c55e.svg?style=for-the-badge&logo=statuspage" />
-  <img alt="Made by YYC³" src="https://img.shields.io/badge/Made%20by-YYC³-8B5CF6.svg?style=for-the-badge&logo=brilliant" />
+  <img alt="Made by YYC3" src="https://img.shields.io/badge/Made%20by-YYC3-8B5CF6.svg?style=for-the-badge&logo=brilliant" />
 </p>
 
 <!-- ========== Row 2: CI/CD 流水线 · Pipeline Status ========== -->
@@ -163,9 +163,9 @@
 
 ## 📐 Project Overview · 项目定位
 
-YYC³ AI Intelligence Platform 是 **YYC³ Family** 旗下的核心 Web 应用层，构建移动应用市场的「**洞察 → 决策 → 执行 → 反馈**」全链路智能闭环。
+YYC3 AI Intelligence Platform 是 **YYC3 Family** 旗下的核心 Web 应用层，构建移动应用市场的「**洞察 → 决策 → 执行 → 反馈**」全链路智能闭环。
 
-> **English**: YYC³ AI Intelligence Platform (`YYC³-aiapp`) is the flagship web application layer of **YYC³ Family**, building the **Insight → Decision → Execution → Feedback** full-loop intelligent closed loop for the mobile app ecosystem.
+> **English**: YYC3 AI Intelligence Platform (`YYC3-aiapp`) is the flagship web application layer of **YYC3 Family**, building the **Insight → Decision → Execution → Feedback** full-loop intelligent closed loop for the mobile app ecosystem.
 
 | Dimension · 维度            | Description · 描述                                                                                                                                    |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -185,7 +185,7 @@ YYC³ AI Intelligence Platform 是 **YYC³ Family** 旗下的核心 Web 应用�
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────┐
-│              YYC³ 智能应用核心机制 · Core Intelligence Mechanism       │
+│              YYC3 智能应用核心机制 · Core Intelligence Mechanism       │
 ├──────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  五高架构 · Five-High Architecture                                    │
@@ -260,7 +260,7 @@ YYC³ AI Intelligence Platform 是 **YYC³ Family** 旗下的核心 Web 应用�
 YYC3-AI-Intelligence-Platform/
 │
 ├── public/
-│   ├── Family-001.png                  ← YYC³ Family 全家福 · README 顶图
+│   ├── Family-001.png                  ← YYC3 Family 全家福 · README 顶图
 │   └── yyc3-icons/                     ← 🎨 全端 Logo 资产
 │       ├── android/                    │   mipmap-hdpi…xxxhdpi + playstore-icon
 │       ├── ios/                        │   20px→1024px 全尺寸 App Store 图标
@@ -284,7 +284,7 @@ YYC3-AI-Intelligence-Platform/
 │   ├── performance/      pwa/           setup/    utils/
 │   └── tsconfig.json
 │
-├── docs/                               ← YYC³ 标准规范 & 设计文档
+├── docs/                               ← YYC3 标准规范 & 设计文档
 │   ├── YYC3-团队通用-标准规范/
 │   ├── architecture/                   ← 导航架构分析/分类/整合报告
 │   └── accessibility/
@@ -316,9 +316,9 @@ YYC3-AI-Intelligence-Platform/
 
 ## 🎨 Brand Asset Matrix · 全端 Logo
 
-YYC³ Logo 已在 [`public/yyc3-icons/`](./public/yyc3-icons) 下提供 **Android / iOS / PWA / Favicon / WebP** 全端适配资产。
+YYC3 Logo 已在 [`public/yyc3-icons/`](./public/yyc3-icons) 下提供 **Android / iOS / PWA / Favicon / WebP** 全端适配资产。
 
-> **English**: The YYC³ Logo is fully provisioned under `public/yyc3-icons/` with complete cross-platform assets for Android, iOS, PWA, Favicon, and WebP.
+> **English**: The YYC3 Logo is fully provisioned under `public/yyc3-icons/` with complete cross-platform assets for Android, iOS, PWA, Favicon, and WebP.
 
 ### Entry Points · 引入入口
 
@@ -625,7 +625,7 @@ git push origin feat/your-feature
 
 | Channel · 渠道         | Link · 链接                                                                                                       |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| **Team · 团队**        | YYC³ Team · YanYuCloudCube                                                                                        |
+| **Team · 团队**        | YYC3 Team · YanYuCloudCube                                                                                        |
 | **Email · 邮箱**       | [admin@0379.email](mailto:admin@0379.email)                                                                       |
 | **GitHub Issues**      | [YYC-Cube/YYC3-AI-Intelligence-Platform/issues](https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform/issues) |
 | **GitHub Discussions** | [Discussions](https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform/discussions)                              |
@@ -648,11 +648,11 @@ git push origin feat/your-feature
 <p align="center">
   <br/>
   <a href="https://ai.yyc3.fun" target="_blank" rel="noopener noreferrer">
-    <img src="./public/yyc3-icons/favicon/favicon-96x96.png" width="48" height="48" alt="YYC³" style="border-radius: 12px;" />
+    <img src="./public/yyc3-icons/favicon/favicon-96x96.png" width="48" height="48" alt="YYC3" style="border-radius: 12px;" />
   </a>
   <br/>
   <sub>
-    © 2026 YYC³ · YanYuCloudCube<br/>
+    © 2026 YYC3 · YanYuCloudCube<br/>
     <strong lang="zh-CN">言启千行代码 · 语枢万物智能</strong><br/>
     <small lang="en">Words inspire code, language pivots intelligence</small>
   </sub>

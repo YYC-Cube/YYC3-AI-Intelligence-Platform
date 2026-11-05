@@ -155,7 +155,7 @@ const partnerSolutions = [
     name: 'Mixpanel Professional',
     provider: 'Mixpanel',
     logo: '📊',
-    description: 'Advanced product analytics with 40% Karbon discount',
+    description: 'Advanced product analytics with 40% YYC3 · discount',
     originalPrice: 999,
     discountedPrice: 599,
     savings: 400,
@@ -187,7 +187,7 @@ const partnerSolutions = [
     originalPrice: 52.99,
     discountedPrice: 37.09,
     savings: 15.9,
-    offer: '30% Off + Karbon Templates',
+    offer: '30% Off + YYC3 · Templates',
     isPremium: true,
     features: ['Photoshop', 'Illustrator', 'After Effects', 'Premiere Pro'],
   },
@@ -225,7 +225,7 @@ const partnerSolutions = [
     name: 'Stripe Professional',
     provider: 'Stripe',
     logo: '💳',
-    description: 'Payment processing with reduced fees for Karbon clients',
+    description: 'Payment processing with reduced fees for YYC3 · clients',
     originalPrice: 2.9,
     discountedPrice: 2.6,
     savings: 0.3,
@@ -350,7 +350,7 @@ export function FinancingModule({
         </div>
       </div>
 
-      {/* Karbon Investment Hero */}
+      {/* YYC3 · Investment Hero */}
       <Card className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-400">
         <CardContent className="p-8">
           <div className="flex items-start justify-between mb-6">
@@ -524,7 +524,7 @@ export function FinancingModule({
                 <div className="space-y-4">
                   <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                     <div className="flex justify-between items-center mb-2">
-                      <h4 className="font-medium">Karbon Publishing Investment</h4>
+                      <h4 className="font-medium">YYC3 · Publishing Investment</h4>
                       <Badge className="bg-yellow-100 text-yellow-800">Pre-approved</Badge>
                     </div>
                     <p className="text-sm text-muted-foreground mb-2">
@@ -1050,7 +1050,7 @@ function InvestmentApplicationModal({
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-semibold">🎯 Karbon Investment Application</h2>
+          <h2 className="text-xl font-semibold">🎯 YYC3 · Investment Application</h2>
           <Button variant="ghost" size="sm" onClick={onClose}>
             ×
           </Button>
@@ -1133,7 +1133,7 @@ function InvestmentApplicationModal({
                 }
               />
               <div className="text-sm text-muted-foreground">
-                <p>I agree to the Karbon Publishing Investment terms:</p>
+                <p>I agree to the YYC3 · Publishing Investment terms:</p>
                 <ul className="mt-2 space-y-1 text-xs">
                   <li>• 50% profit share after cost recovery</li>
                   <li>• Marketing and technical implementation support</li>

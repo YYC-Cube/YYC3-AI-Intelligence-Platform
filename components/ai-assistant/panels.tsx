@@ -1,8 +1,8 @@
 /**
- * @fileoverview YYC³ AI Assistant - 8 个 Tab 面板组件
+ * @fileoverview YYC3 AI Assistant - 8 个 Tab 面板组件
  * @description Adapted from docs/AI-Dev/AIAssistant/panels.tsx — v3.0
  * @version 1.0.0
- * @author YYC³ Team
+ * @author YYC3 Team
  */
 import {
   Activity,

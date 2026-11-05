@@ -1,8 +1,8 @@
 /**
- * @fileoverview YYC³ AI Assistant - 导出入口
+ * @fileoverview YYC3 AI Assistant - 导出入口
  * @description Adapted from docs/AI-Dev/AIAssistant/index.ts — v3.0
  * @version 1.0.0
- * @author YYC³ Team
+ * @author YYC3 Team
  *
  * 导出:
  *   AiAssistant     - 主组件 (默认 floating 模式)

@@ -1,11 +1,11 @@
 /**
- * @fileoverview YYC³ useResponsive Hook
+ * @fileoverview YYC3 useResponsive Hook
  * @description Shared responsive breakpoint detection hook replacing duplicate resize listeners
  * @audit-fix [C3-FIX] — Extracted duplicated resize logic from HomeMode and YYCEnterpriseLayout
  * @audit-phase P1
  * @audit-date 2026-04-21
  * @version 1.0.0
- * @author YYC³ Team
+ * @author YYC3 Team
  */
 import { useEffect, useState } from 'react';
 

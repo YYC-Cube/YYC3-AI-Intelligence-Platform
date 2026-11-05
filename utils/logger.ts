@@ -1,11 +1,11 @@
 /**
- * @fileoverview YYC³ logger Utility
+ * @fileoverview YYC3 logger Utility
  * @description Unified logging system replacing console.log/warn/error in production code
  * @audit-fix [W1-FIX] — Centralized logging with production silencing
  * @audit-phase P2
  * @audit-date 2026-04-21
  * @version 1.0.0
- * @author YYC³ Team
+ * @author YYC3 Team
  */
 
 /* eslint-disable no-console */

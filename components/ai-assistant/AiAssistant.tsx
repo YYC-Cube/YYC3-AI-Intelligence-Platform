@@ -1,9 +1,9 @@
 /**
- * @fileoverview YYC³ AI 智能助理浮窗组件 v3.0
+ * @fileoverview YYC3 AI 智能助理浮窗组件 v3.0
  * @description Adapted from docs/AI-Dev/AIAssistant/AIAssistant.tsx — v3.0
  * 模块化重构 + 双模式 (floating/inline)
  * @version 1.0.0
- * @author YYC³ Team
+ * @author YYC3 Team
  *
  * @dependencies:
  *   - react (^18 || ^19)
@@ -302,7 +302,7 @@ export function AiAssistant({
         </div>
         <div className="absolute bottom-full right-0 mb-2 px-3 py-1.5 rounded-lg bg-[rgba(8,25,55,0.95)] border border-[rgba(0,180,255,0.2)] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
           <span className="text-[#00d4ff]" style={{ fontSize: '0.72rem' }}>
-            {currentPersona?.shortName ?? 'YYC³'} 智能助理
+            {currentPersona?.shortName ?? 'YYC3'} 智能助理
           </span>
         </div>
       </button>
@@ -340,7 +340,7 @@ export function AiAssistant({
                   className="text-[#e0f0ff] flex items-center gap-1.5"
                   style={{ fontSize: '0.85rem' }}
                 >
-                  {currentPersona?.shortName ?? 'YYC³'}
+                  {currentPersona?.shortName ?? 'YYC3'}
                   <span className="text-[rgba(0,212,255,0.3)]" style={{ fontSize: '0.55rem' }}>
                     {currentPersona?.enTitle ?? 'AI'}
                   </span>

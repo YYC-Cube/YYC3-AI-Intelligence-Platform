@@ -8,8 +8,8 @@ describe('NARAConsole Component', () => {
   });
 
   describe('初始渲染', () => {
-    it('应该正确渲染标题 "NARA"', () => {
-      expect(screen.getByText('NARA')).toBeInTheDocument();
+    it('应该正确渲染标题 "YYC3 · NARA"', () => {
+      expect(screen.getByText('YYC3 · NARA')).toBeInTheDocument();
     });
 
     it('应该正确渲染副标题 "AI 操作系统"（默认中文）', () => {

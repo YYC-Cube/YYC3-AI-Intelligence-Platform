@@ -1,3 +1,10 @@
+/**
+ * @fileoverview YYC3 · 品牌标识组件
+ * @description 全站唯一 Logo 来源：统一引用 public/yyc3-icons 下的官方图标资产，
+ *              品牌全称固定为 YanYuCloudCube，产品前缀固定为 "YYC3 ·"。
+ */
+const BRAND_ICON = '/yyc3-icons/pwa/icon-192x192.png';
+
 interface YYCLogoProps {
   variant?: 'full' | 'short' | 'icon';
   size?: 'small' | 'medium' | 'large' | 'xl';
@@ -11,85 +18,44 @@ export function YYCLogo({
   className = '',
   showTagline = false,
 }: YYCLogoProps) {
-  const sizeClasses = {
-    small: 'h-6 text-sm',
-    medium: 'h-8 text-base',
-    large: 'h-10 text-lg',
-    xl: 'h-14 text-2xl',
+  const textSize = {
+    small: 'text-xs',
+    medium: 'text-sm',
+    large: 'text-base',
+    xl: 'text-xl',
   };
 
   const iconSizes = {
-    small: 24,
-    medium: 32,
-    large: 40,
-    xl: 56,
+    small: 20,
+    medium: 28,
+    large: 36,
+    xl: 52,
   };
 
   const iconSize = iconSizes[size];
 
-  // Colors based on brand: Primary Blue, Secondary Purple, Accent Cyan
   return (
-    <div className={`flex items-center gap-2 select-none ${sizeClasses[size]} ${className}`}>
-      {/* Logo Icon */}
-      <div className="relative flex items-center justify-center">
-        <svg
-          width={iconSize}
-          height={iconSize}
-          viewBox="0 0 40 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M20 5L30 10V20L20 25L10 20V10L20 5Z"
-            stroke="url(#yyc-gradient)"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path d="M20 25V35" stroke="url(#yyc-gradient-2)" strokeWidth="3" strokeLinecap="round" />
-          <defs>
-            <linearGradient
-              id="yyc-gradient"
-              x1="10"
-              y1="5"
-              x2="30"
-              y2="25"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0%" stopColor="#3B82F6" /> {/* Blue */}
-              <stop offset="100%" stopColor="#8B5CF6" /> {/* Purple */}
-            </linearGradient>
-            <linearGradient
-              id="yyc-gradient-2"
-              x1="20"
-              y1="25"
-              x2="20"
-              y2="35"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0%" stopColor="#06B6D4" /> {/* Cyan */}
-              <stop offset="100%" stopColor="#3B82F6" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+    <div className={`flex items-center gap-2 select-none ${className}`}>
+      <img
+        src={BRAND_ICON}
+        alt="YYC3"
+        width={iconSize}
+        height={iconSize}
+        className="rounded-md object-contain"
+        loading="eager"
+        decoding="async"
+      />
 
-      {/* Text Content */}
       {variant !== 'icon' && (
         <div className="flex flex-col justify-center leading-none">
-          <div className="flex items-baseline gap-1.5">
-            <span className="font-bold tracking-tight bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-              YYC
-            </span>
-            {variant === 'full' && (
-              <span className="font-medium text-slate-600 dark:text-slate-300 tracking-wide">
-                Cloud
-              </span>
-            )}
-          </div>
+          <span
+            className={`font-bold tracking-tight text-slate-800 dark:text-white ${textSize[size]}`}
+          >
+            YYC3 ·
+          </span>
           {(showTagline || variant === 'full') && size !== 'small' && (
-            <span className="text-[0.65em] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-widest scale-90 origin-left">
-              Enterprise
+            <span className="text-[0.65em] font-medium text-slate-400 dark:text-slate-500 tracking-widest">
+              YanYuCloudCube
             </span>
           )}
         </div>

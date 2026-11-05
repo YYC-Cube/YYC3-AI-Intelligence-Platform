@@ -68,7 +68,7 @@ export function InstallPrompt({ className = '' }: InstallPromptProps) {
       className={`fixed bottom-20 right-4 z-50 flex items-center gap-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-3 text-white shadow-xl ${className}`}
     >
       <div className="flex flex-col">
-        <span className="text-sm font-bold">Install YYC³ AI App</span>
+        <span className="text-sm font-bold">Install YYC3 · AI App</span>
         <span className="text-xs opacity-90">Get offline access & faster experience</span>
       </div>
       <button

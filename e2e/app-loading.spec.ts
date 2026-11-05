@@ -5,7 +5,7 @@ test.describe('应用加载 - Application Loading', () => {
   test('应该正确加载NARA控制台主页', async ({ page }) => {
     await page.goto('/');
 
-    await expect(page).toHaveTitle(/YYC³|NARA/i);
+    await expect(page).toHaveTitle(/YYC3|NARA/i);
 
     await expect(page.locator('h1')).toContainText('NARA');
 

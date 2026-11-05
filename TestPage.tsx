@@ -3,7 +3,7 @@ export default function TestPage() {
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
       <div className="max-w-2xl w-full">
         <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 shadow-2xl">
-          <h1 className="text-4xl font-bold text-white mb-4">YYC³ AI Platform Test</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">YYC3 · AI Platform Test</h1>
           <p className="text-xl text-blue-100 mb-6">测试页面 - 验证React渲染是否正常</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">

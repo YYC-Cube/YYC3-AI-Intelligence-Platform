@@ -1,8 +1,8 @@
 /**
- * @fileoverview YYC³ AI Assistant - 所有类型定义
+ * @fileoverview YYC3 AI Assistant - 所有类型定义
  * @description Adapted from docs/AI-Dev/AIAssistant/types.ts — v3.0
  * @version 1.0.0
- * @author YYC³ Team
+ * @author YYC3 Team
  */
 import type React from 'react';
 

@@ -1,8 +1,8 @@
 /**
- * @fileoverview YYC³ AI Assistant - 人格化 Mock 回复引擎
+ * @fileoverview YYC3 AI Assistant - 人格化 Mock 回复引擎
  * @description Adapted from docs/AI-Dev/AIAssistant/mock.ts — v3.0
  * @version 1.0.0
- * @author YYC³ Team
+ * @author YYC3 Team
  */
 import { PERSONAS_MAP } from './data';
 
@@ -102,7 +102,7 @@ export function getPersonaResponse(personaId: string, userMsg: string): string {
 export function getPersonaGreeting(personaId: string): string {
   const p = PERSONAS_MAP[personaId];
   if (!p) {
-    return '你好！我是 YYC³ AI 智能助理。请选择一位家人开始对话。';
+    return '你好！我是 YYC3 AI 智能助理。请选择一位家人开始对话。';
   }
   return `你好！我是 ${p.name}（${p.enTitle}）。\n\n${p.greeting}\n\n我可以帮你：\n${p.expertise.map((e) => `- ${e}`).join('\n')}\n\n请输入指令或点击快捷命令开始操作。`;
 }

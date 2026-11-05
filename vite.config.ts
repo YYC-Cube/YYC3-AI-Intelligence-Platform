@@ -34,8 +34,8 @@ export default defineConfig({
       // 仅预缓存应用外壳；图片走 runtimeCaching，避免首装下载 ~5MB 静态图
       includeAssets: ['favicon.ico'],
       manifest: {
-        name: 'YYC³ AI Intelligence Platform',
-        short_name: 'YYC³ AI',
+        name: 'YYC3 · AI Intelligence Platform',
+        short_name: 'YYC3 · AI',
         description:
           'Enterprise-grade analytics and intelligence platform for mobile app developers - AI-powered insights for App Store Optimization, market intelligence, and competitive analysis',
         theme_color: '#0C70F2',

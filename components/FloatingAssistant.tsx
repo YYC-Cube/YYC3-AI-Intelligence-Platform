@@ -1,9 +1,9 @@
 /**
- * @fileoverview YYC³ Floating AI Assistant - 浮窗 AI 智能助理入口
+ * @fileoverview YYC3 Floating AI Assistant - 浮窗 AI 智能助理入口
  * @description Integrated with AiAssistant full component (ai-assistant/)
  *   Maintains backward-compatible props for EnterpriseApp.tsx and ClientApp.tsx
  * @version 2.0.0
- * @author YYC³ Team
+ * @author YYC3 Team
  *
  * @integration
  *   - Docs source: docs/AI-Dev/AIAssistant/ (v3.0 modular)

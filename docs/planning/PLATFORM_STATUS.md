@@ -1,4 +1,4 @@
-# 🚀 KARBON PLATFORM STATUS & ROADMAP
+# 🚀 YYC3 · PLATFORM STATUS & ROADMAP
 
 > ⚠️ **成熟度声明（2026-11-05 校准）**
 > 本仓库当前为 **可交互 Demo / 原型**：19 个业务模块的 UI 与交互已完整实现，但
