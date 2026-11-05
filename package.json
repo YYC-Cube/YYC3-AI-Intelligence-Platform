@@ -22,7 +22,7 @@
     "e2e:headed": "playwright test --headed",
     "e2e:debug": "playwright test --debug",
     "e2e:ci": "playwright test --reporter=list",
-    "e2e:install": "npx playwright install --with-deps",
+    "e2e:install": "pnpm exec playwright install --with-deps",
     "lighthouse": "lighthouse http://localhost:3200 --output html --output-path ./lighthouse-report.html --chrome-flags=\"--headless\"",
     "lighthouse:ci": "lhci autorun --config=lighthouserc.json",
     "lighthouse:dev": "lhci autorun --config=lighthouserc.dev.json",
