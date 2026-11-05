@@ -23,10 +23,10 @@ function Panel({
 }) {
   return (
     <section className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-      <header className="flex items-center justify-between px-5 py-3 border-b border-slate-100 dark:border-slate-800">
+      <div className="flex items-center justify-between px-5 py-3 border-b border-slate-100 dark:border-slate-800">
         <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">{title}</h3>
         {extra}
-      </header>
+      </div>
       <div className="p-5">{children}</div>
     </section>
   );
