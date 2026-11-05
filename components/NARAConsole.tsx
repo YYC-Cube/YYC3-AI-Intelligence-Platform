@@ -87,6 +87,8 @@ export function NARAConsole() {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setLanguage((l) => (l === 'zh' ? 'en' : 'zh'))}
+                title={language === 'zh' ? '切换语言 / Switch to English' : '切换语言 / 切换到中文'}
+                aria-label="切换语言"
                 className="p-2 rounded-lg hover:bg-slate-100 text-slate-600 transition-colors flex items-center gap-2 text-xs font-medium"
               >
                 <Languages className="w-4 h-4" />

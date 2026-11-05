@@ -1,12 +1,17 @@
 import { expect, test } from '@playwright/test';
 
+/**
+ * 所有导航标签断言均限定在 <header> 内。
+ * 原因：切换模式后 ChatMode / LoopMode 内容区也会出现「对话 / Chat」等按钮，
+ * 未限定的 `button:has-text(...)` 会命中多个元素并触发 Playwright strict mode 报错。
+ */
 test.describe('导航流程 - Navigation Flow', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
 
   test('应该能够切换到对话模式', async ({ page }) => {
-    const chatTab = page.locator('button:has-text("对话")');
+    const chatTab = page.locator('header button:has-text("对话")');
 
     await chatTab.click();
 
@@ -17,7 +22,7 @@ test.describe('导航流程 - Navigation Flow', () => {
   });
 
   test('应该能够切换到循环模式', async ({ page }) => {
-    const loopTab = page.locator('button:has-text("循环")');
+    const loopTab = page.locator('header button:has-text("循环")');
 
     await loopTab.click();
 
@@ -28,52 +33,56 @@ test.describe('导航流程 - Navigation Flow', () => {
   });
 
   test('应该能够切换到企业系统模式', async ({ page }) => {
-    const systemTab = page.locator('button:has-text("企业系统")');
+    const systemTab = page.locator('header button:has-text("企业系统")');
 
     await systemTab.click();
 
-    await expect(systemTab).toHaveClass(/bg-white/);
-
+    // 企业系统为独立布局（NARA 头部与标签会被卸载），因此不能断言原 tab 仍高亮
     const exitButton = page.locator('button:has-text("Exit")');
     await expect(exitButton).toBeVisible();
+
+    await exitButton.click();
+    await expect(page.locator('header button:has-text("主页")')).toHaveClass(/bg-white/);
   });
 
   test('应该能够在不同模式间快速切换', async ({ page }) => {
-    const tabs = ['主页', '对话', '循环', '企业系统'];
+    // 企业系统为独立布局，单独在下一个用例覆盖，此处只做头部内三态切换
+    const tabs = ['主页', '对话', '循环'];
 
     for (let i = 0; i < tabs.length; i++) {
-      const tab = page.locator(`button:has-text("${tabs[i]}")`);
+      const tab = page.locator(`header button:has-text("${tabs[i]}")`);
       await tab.click();
 
       await expect(tab).toHaveClass(/bg-white/, { timeout: 3000 });
 
       if (i < tabs.length - 1) {
-        const nextTab = page.locator(`button:has-text("${tabs[i + 1]}")`);
+        const nextTab = page.locator(`header button:has-text("${tabs[i + 1]}")`);
         await expect(nextTab).not.toHaveClass(/bg-white/);
       }
     }
   });
 
   test('应该能够从企业系统返回主页', async ({ page }) => {
-    const systemTab = page.locator('button:has-text("企业系统")');
+    const systemTab = page.locator('header button:has-text("企业系统")');
     await systemTab.click();
 
     const exitButton = page.locator('button:has-text("Exit")');
     await exitButton.click();
 
-    const homeTab = page.locator('button:has-text("主页")');
+    const homeTab = page.locator('header button:has-text("主页")');
     await expect(homeTab).toHaveClass(/bg-white/);
   });
 
   test('导航切换应该有平滑过渡效果', async ({ page }) => {
-    const homeTab = page.locator('button:has-text("主页")');
-    const chatTab = page.locator('button:has-text("对话")');
+    const homeTab = page.locator('header button:has-text("主页")');
+    const chatTab = page.locator('header button:has-text("对话")');
 
     const initialTransition = await homeTab.evaluate(
       (el) => window.getComputedStyle(el).transition
     );
 
-    expect(initialTransition).toContain('transition');
+    // transition 简写返回形如 "0.3s cubic-bezier(0.4, 0, 0.2, 1)"，不能断言包含 "transition" 关键字
+    expect(initialTransition).toMatch(/[0-9.]+s|cubic-bezier|ease/);
 
     await chatTab.click();
 
@@ -81,11 +90,11 @@ test.describe('导航流程 - Navigation Flow', () => {
   });
 
   test('当前激活的标签应该有正确的视觉样式', async ({ page }) => {
-    const activeTab = page.locator('button:has-text("主页")');
+    const activeTab = page.locator('header button:has-text("主页")');
 
     await expect(activeTab).toHaveCSS('background-color', /rgb\(255|rgb\(25[0-5]/);
 
-    const inactiveTab = page.locator('button:has-text("对话")');
+    const inactiveTab = page.locator('header button:has-text("对话")');
 
     const bgColor = await inactiveTab.evaluate((el) => window.getComputedStyle(el).backgroundColor);
     expect(bgColor).not.toContain('255, 255, 255');

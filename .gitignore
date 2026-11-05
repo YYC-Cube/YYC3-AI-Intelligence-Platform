@@ -50,5 +50,11 @@ Thumbs.db
 lighthouse-report.html
 *.lhr.json
 
+# Playwright
+test-results/
+playwright-report/
+e2e-results.json
+blob-report/
+
 # YYC3-ABCD Knowledge Base (reference only, not committed)
 YYC3-ABCD/

@@ -41,14 +41,14 @@ test.describe('应用加载 - Application Loading', () => {
     const expectedTabs = ['主页', '对话', '循环', '企业系统'];
 
     for (const tab of expectedTabs) {
-      await expect(page.locator(`button:has-text("${tab}")`)).toBeVisible();
+      await expect(page.locator(`header button:has-text("${tab}")`)).toBeVisible();
     }
   });
 
   test('默认应该激活主页模式', async ({ page }) => {
     await page.goto('/');
 
-    const homeTab = page.locator('button:has-text("主页")');
+    const homeTab = page.locator('header button:has-text("主页")');
 
     await expect(homeTab).toHaveClass(/bg-white/);
   });
@@ -56,7 +56,7 @@ test.describe('应用加载 - Application Loading', () => {
   test('应该支持语言切换按钮显示', async ({ page }) => {
     await page.goto('/');
 
-    const languageButton = page.locator('button:has-text("EN")');
+    const languageButton = page.locator('header button:has-text("EN")');
 
     await expect(languageButton).toBeVisible();
 
