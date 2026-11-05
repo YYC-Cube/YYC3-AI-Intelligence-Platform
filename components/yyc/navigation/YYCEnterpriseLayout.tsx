@@ -1,15 +1,31 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { BarChart3, Bell, ChevronRight, Edit3, Menu, Search, Sparkles, Trash2 } from 'lucide-react';
+import { Bell, ChevronDown, ChevronRight, Menu, Search, Sparkles } from 'lucide-react';
 import { createElement, useEffect, useState } from 'react';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { YYCLogo } from '../../YYCLogo';
+import { EnterpriseModuleView } from './enterprise-views';
 import { level4Actions, yycNavigationConfig } from './nav-config';
+
+/**
+ * 已实现模块白名单：每个一级模块只保留 4 个真实可用入口，
+ * 其余二级入口折叠到「规划中」，避免 92 个入口全部可点却内容雷同。
+ */
+const READY_L2: Record<string, string[]> = {
+  'data-center': ['ai-data-screen', 'data-overview', 'data-analytics', 'smart-alert'],
+  'core-business': ['customer-mgmt', 'lead-mgmt', 'contract-mgmt', 'order-mgmt'],
+  hr: ['employee-mgmt', 'smart-recruitment', 'performance-mgmt', 'org-structure'],
+  finance: ['smart-accounting', 'invoice-mgmt', 'smart-budget', 'smart-reimbursement'],
+  office: ['smart-approval', 'document-mgmt', 'workflow-mgmt', 'smart-meetings'],
+  'ai-center': ['ai-assistant', 'ai-analytics', 'natural-language', 'ai-content-creator'],
+  settings: ['system-settings', 'user-mgmt', 'role-permission', 'log-mgmt'],
+};
 
 export function YYCEnterpriseLayout() {
   // State for 4-Level Navigation
   const [activeL1, setActiveL1] = useState<string>('data-center');
-  const [activeL2, setActiveL2] = useState<string>('dashboard');
+  const [activeL2, setActiveL2] = useState<string>(READY_L2['data-center'][0]);
   const [activeL3, setActiveL3] = useState<string>('overview');
+  const [showPlanned, setShowPlanned] = useState(false);
 
   // Mobile & UI State
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -19,8 +35,12 @@ export function YYCEnterpriseLayout() {
   // Derived Data
   const currentL1 = yycNavigationConfig.find((l1) => l1.id === activeL1) || yycNavigationConfig[0];
   const currentL2List = currentL1.children;
-  const currentL2 = currentL2List.find((l2) => l2.id === activeL2) || currentL2List[0];
+  const readyIds = READY_L2[currentL1.id] ?? currentL2List.map((l2) => l2.id);
+  const readyL2List = currentL2List.filter((l2) => readyIds.includes(l2.id));
+  const plannedL2List = currentL2List.filter((l2) => !readyIds.includes(l2.id));
+  const currentL2 = currentL2List.find((l2) => l2.id === activeL2) || readyL2List[0];
   const currentL3List = currentL2?.tabs || [];
+  const currentL3Label = currentL3List.find((l3) => l3.id === activeL3)?.label ?? '';
 
   // Sidebar sync with breakpoint
   useEffect(() => {
@@ -29,15 +49,14 @@ export function YYCEnterpriseLayout() {
 
   // Update L2/L3 defaults when L1 changes
   useEffect(() => {
-    if (currentL1.children.length > 0) {
-      const firstL2 = currentL1.children[0];
+    const children = yycNavigationConfig.find((l1) => l1.id === activeL1)?.children ?? [];
+    const allowed = READY_L2[activeL1] ?? children.map((c) => c.id);
+    const firstL2 = children.find((c) => allowed.includes(c.id)) ?? children[0];
+    if (firstL2) {
       setActiveL2(firstL2.id);
-      if (firstL2.tabs.length > 0) {
-        setActiveL3(firstL2.tabs[0].id);
-      }
+      setActiveL3(firstL2.tabs[0]?.id ?? '');
     }
-    // Children list derived from nav config; intentionally not in deps to avoid re-trigger
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setShowPlanned(false);
   }, [activeL1]);
 
   return (
@@ -149,9 +168,9 @@ export function YYCEnterpriseLayout() {
                 <p className="text-xs text-slate-500 mt-1 line-clamp-2">{currentL1.description}</p>
               </div>
 
-              {/* L2 List */}
+              {/* L2 List（仅已实现模块可点，其余折叠为规划中） */}
               <div className="flex-1 overflow-y-auto p-3 space-y-1">
-                {currentL2List.map((item) => {
+                {readyL2List.map((item) => {
                   const isActive = activeL2 === item.id;
                   const Icon = item.icon;
                   return (
@@ -185,13 +204,49 @@ export function YYCEnterpriseLayout() {
                     </button>
                   );
                 })}
+
+                {plannedL2List.length > 0 && (
+                  <div className="pt-2">
+                    <button
+                      onClick={() => setShowPlanned((v) => !v)}
+                      aria-expanded={showPlanned}
+                      className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60"
+                    >
+                      <span className="flex items-center gap-1.5">
+                        <ChevronDown
+                          className={`w-3.5 h-3.5 transition-transform ${showPlanned ? '' : '-rotate-90'}`}
+                        />
+                        规划中（{plannedL2List.length}）
+                      </span>
+                      <span className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px]">
+                        未开放
+                      </span>
+                    </button>
+
+                    {showPlanned && (
+                      <div className="mt-1 space-y-1">
+                        {plannedL2List.map((item) => (
+                          <div
+                            key={item.id}
+                            aria-disabled="true"
+                            title="该模块尚在规划中"
+                            className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-slate-400 dark:text-slate-500 cursor-not-allowed select-none"
+                          >
+                            <item.icon className="w-4 h-4 text-slate-300 dark:text-slate-600" />
+                            <span className="font-medium">{item.label}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* AI Assistant Trigger in Sidebar */}
               <div className="p-4 border-t border-slate-200 dark:border-slate-800">
                 <button className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/20 hover:shadow-purple-500/30 transition-shadow">
                   <Sparkles className="w-4 h-4" />
-                  <span className="text-sm font-bold">YYC AI 助手</span>
+                  <span className="text-sm font-bold">YYC3 · AI 助手</span>
                 </button>
               </div>
             </motion.aside>
@@ -219,9 +274,12 @@ export function YYCEnterpriseLayout() {
               </span>
             </div>
             <h1 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-              {currentL2.label}
+              {currentL2?.label}
               <span className="px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-medium border border-blue-200 dark:border-blue-800">
-                Enterprise Edition
+                YYC3 · Enterprise
+              </span>
+              <span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[10px] font-medium border border-amber-200">
+                演示数据
               </span>
             </h1>
           </div>
@@ -291,7 +349,7 @@ export function YYCEnterpriseLayout() {
             </div>
           </div>
 
-          {/* Page Content Simulation */}
+          {/* Module-specific content：每个一级模块使用不同的信息架构 */}
           <div className="flex-1 p-6 overflow-y-auto bg-slate-50/30 dark:bg-slate-950">
             <motion.div
               key={`${activeL1}-${activeL2}-${activeL3}`}
@@ -300,101 +358,12 @@ export function YYCEnterpriseLayout() {
               transition={{ duration: 0.3 }}
               className="max-w-6xl mx-auto"
             >
-              {/* Demo Content Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div className="col-span-2 p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-bold text-slate-800 dark:text-white">
-                      {currentL3List.find((t) => t.id === activeL3)?.label} - 核心指标
-                    </h3>
-                    <button className="text-blue-600 text-xs font-medium hover:underline">
-                      查看详情
-                    </button>
-                  </div>
-                  <div className="h-48 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800/50 rounded-lg flex items-center justify-center border border-dashed border-blue-200 dark:border-slate-700">
-                    <span className="text-slate-400 dark:text-slate-500 text-sm flex flex-col items-center gap-2">
-                      <BarChart3 className="w-8 h-8 opacity-50" />
-                      数据可视化区域
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                  <h3 className="font-bold text-slate-800 dark:text-white mb-4">AI 智能洞察</h3>
-                  <div className="space-y-4">
-                    {[1, 2, 3].map((i) => (
-                      <div
-                        key={i}
-                        className="flex gap-3 p-3 rounded-lg bg-purple-50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-900/30"
-                      >
-                        <Sparkles className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
-                        <div>
-                          <p className="text-xs font-medium text-slate-800 dark:text-slate-200">
-                            检测到异常数据波动
-                          </p>
-                          <p className="text-[10px] text-slate-500 mt-1">
-                            建议检查{currentL2.label}模块的最近输入。
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <div className="flex items-center gap-4 mb-6 border-b border-slate-100 dark:border-slate-800 pb-4">
-                  <h3 className="font-bold text-slate-800 dark:text-white">近期记录</h3>
-                  <div className="flex-1" />
-                  <div className="relative">
-                    <Search className="absolute left-2.5 top-1.5 w-4 h-4 text-slate-400" />
-                    <input
-                      type="text"
-                      placeholder="搜索记录..."
-                      className="pl-9 pr-4 py-1.5 text-sm rounded-md border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div
-                      key={i}
-                      className="flex items-center justify-between p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-lg transition-colors border border-transparent hover:border-slate-100 dark:hover:border-slate-800"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className="w-8 h-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 font-mono text-xs">
-                          {String(i).padStart(2, '0')}
-                        </div>
-                        <div>
-                          <div className="text-sm font-medium text-slate-900 dark:text-slate-200">
-                            示例项目数据条目 - {activeL3}
-                          </div>
-                          <div className="text-xs text-slate-500">
-                            更新于 2 小时前 · 由 Admin 修改
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button
-                          className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded"
-                          aria-label="Edit"
-                          title="Edit"
-                        >
-                          <Edit3 className="w-3.5 h-3.5" />
-                        </button>
-                        <button
-                          className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded"
-                          aria-label="Delete"
-                          title="Delete"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <EnterpriseModuleView
+                l1Id={activeL1}
+                l1Label={currentL1.label}
+                l2Label={currentL2?.label ?? ''}
+                l3Label={currentL3Label}
+              />
             </motion.div>
           </div>
         </main>
@@ -434,6 +403,10 @@ export function YYCEnterpriseLayout() {
                 {yycNavigationConfig.slice(0, 3).map((l1) => (
                   <button
                     key={l1.id}
+                    onClick={() => {
+                      setActiveL1(l1.id);
+                      setSearchOpen(false);
+                    }}
                     className="w-full text-left px-3 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 text-sm text-slate-700 dark:text-slate-300 flex items-center gap-3"
                   >
                     <l1.icon className="w-4 h-4 text-slate-400" />
