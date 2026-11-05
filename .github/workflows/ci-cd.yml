@@ -5,6 +5,8 @@ on:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
+  # 允许手动重跑（GitHub Pages/Artifacts API 偶发故障时无需空提交）
+  workflow_dispatch:
 
 permissions:
   contents: read
