@@ -78,8 +78,8 @@ export function YYCEnterpriseLayout() {
             <YYCLogo variant="short" size="medium" />
           </div>
 
-          {/* L1 Items (Desktop) */}
-          <nav className="hidden lg:flex items-center gap-1 ml-4 overflow-x-auto no-scrollbar">
+          {/* L1 Items（移动端横向滚动，保证小屏也能切换一级模块） */}
+          <nav className="flex items-center gap-1 ml-2 lg:ml-4 overflow-x-auto no-scrollbar max-w-[60vw] lg:max-w-none">
             {yycNavigationConfig.map((item) => {
               const isActive = activeL1 === item.id;
               const Icon = item.icon;

@@ -34,6 +34,12 @@ test.describe('企业后台 - Enterprise Workspace', () => {
   });
 
   test('未实现模块应收起为「规划中」且不可点击', async ({ page }) => {
+    // 移动端（<1024px）侧边栏默认收起，需先展开；桌面端汉堡按钮不可见
+    const viewport = page.viewportSize();
+    if (viewport && viewport.width < 1024) {
+      await page.locator('button[aria-label="Toggle sidebar"]').click();
+    }
+
     const toggle = page.locator('button:has-text("规划中（")').first();
     await expect(toggle).toBeVisible();
 
