@@ -12,12 +12,16 @@
   </picture>
 </p>
 
+> ⚠️ **成熟度声明**：本项目当前是**可交互 Demo / 前端原型**——界面与交互完整，但
+> **没有后端、没有真实数据、没有服务端鉴权**，所有业务数据为内置 Mock。
+> 生产化路线与已知风险见 [首次技术调研报告](./docs/audits/YYC3-首次技术调研报告-2026-11-05.md)。
+
 <!-- ====================================================================== -->
 <!--                         HEADLINE · 标题区                                -->
 <!-- ====================================================================== -->
 
 <h1 align="center">
-  <a href="https://neuxs-ai.yyc3.top" target="_blank" rel="noopener noreferrer">
+  <a href="https://ai.yyc3.fun" target="_blank" rel="noopener noreferrer">
     <img src="./public/yyc3-icons/favicon/favicon-96x96.png" width="32" height="32" alt="YYC³ Logo" style="vertical-align: middle; margin-right: 8px; border-radius: 6px;" />
     YYC³ AI Intelligence Platform
   </a>
@@ -37,11 +41,11 @@
 </p>
 
 <p align="center">
-  <a href="https://neuxs-ai.yyc3.top" target="_blank" rel="noopener noreferrer">
-    <img src="https://img.shields.io/badge/🌐-neuxs--ai.yyc3.top-0C70F2?style=for-the-badge&logo=safari&logoColor=white" alt="Domain: neuxs-ai.yyc3.top" />
+  <a href="https://ai.yyc3.fun" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/🌐-ai.yyc3.fun-0C70F2?style=for-the-badge&logo=safari&logoColor=white" alt="Domain: ai.yyc3.fun" />
   </a>
   &nbsp;
-  <a href="https://github.com/YYC-Cube/YYC3-AI-App-Intelligence-Platform" target="_blank" rel="noopener noreferrer">
+  <a href="https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/GitHub-YYC³%20Family-black?style=for-the-badge&logo=github&logoColor=white" alt="GitHub: YYC-Cube" />
   </a>
 </p>
@@ -66,16 +70,16 @@
 <!-- ========== Row 2: CI/CD 流水线 · Pipeline Status ========== -->
 
 <p align="center">
-  <a href="https://github.com/YYC-Cube/YYC3-AI-App-Intelligence-Platform/actions/workflows/ci-cd.yml">
-    <img alt="CI/CD Pipeline" src="https://github.com/YYC-Cube/YYC3-AI-App-Intelligence-Platform/actions/workflows/ci-cd.yml/badge.svg?style=for-the-badge" />
+  <a href="https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform/actions/workflows/ci-cd.yml">
+    <img alt="CI/CD Pipeline" src="https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform/actions/workflows/ci-cd.yml/badge.svg?style=for-the-badge" />
   </a>
-  <a href="https://github.com/YYC-Cube/YYC3-AI-App-Intelligence-Platform/actions/workflows/lighthouse.yml">
-    <img alt="Lighthouse CI" src="https://github.com/YYC-Cube/YYC3-AI-App-Intelligence-Platform/actions/workflows/lighthouse.yml/badge.svg?style=for-the-badge" />
+  <a href="https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform/actions/workflows/ci-cd.yml">
+    <img alt="Lighthouse CI" src="https://img.shields.io/badge/Lighthouse-CI-ff6b00.svg?style=for-the-badge&logo=lighthouse&logoColor=white" />
   </a>
-  <a href="https://github.com/YYC-Cube/YYC3-AI-App-Intelligence-Platform/deployments">
+  <a href="https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform/deployments">
     <img alt="GitHub Pages" src="https://img.shields.io/badge/GitHub%20Pages-Deployed-22c55e.svg?style=for-the-badge&logo=githubpages&logoColor=white" />
   </a>
-  <a href="https://neuxs-ai.yyc3.top">
+  <a href="https://ai.yyc3.fun">
     <img alt="DNS Verified" src="https://img.shields.io/badge/DNS-Verified-0C70F2.svg?style=for-the-badge&logo=icloud&logoColor=white" />
   </a>
 </p>
@@ -112,7 +116,7 @@
 
 <p align="center">
   <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square&logo=github" />
-  <img alt="Good First Issues" src="https://img.shields.io/github/issues/YYC-Cube/YYC3-AI-App-Intelligence-Platform/good%20first%20issue?style=flat-square&logo=github" />
+  <img alt="Good First Issues" src="https://img.shields.io/github/issues/YYC-Cube/YYC3-AI-Intelligence-Platform/good%20first%20issue?style=flat-square&logo=github" />
   <img alt="Discussions" src="https://img.shields.io/badge/Discussions-Welcome-58A6FF.svg?style=flat-square&logo=github" />
   <img alt="Contributor Covenant" src="https://img.shields.io/badge/Contributor%20Covenant-2.1-000000.svg?style=flat-square" />
   <img alt="Security Policy" src="https://img.shields.io/badge/Security-Policy-red.svg?style=flat-square&logo=github" />
@@ -221,11 +225,11 @@ YYC³ AI Intelligence Platform 是 **YYC³ Family** 旗下的核心 Web 应用�
 
 ## 🌐 Live Preview · 线上体验
 
-| Environment · 环境        | URL · 地址                                                                                                           | Description · 说明                          |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| **生产环境 · Production** | [**neuxs-ai.yyc3.top**](https://neuxs-ai.yyc3.top)                                                                   | GitHub Pages via DNS verified custom domain |
-| **GitHub Pages (备用)**   | [yyc-cube.github.io/YYC3-AI-App-Intelligence-Platform](https://yyc-cube.github.io/YYC3-AI-App-Intelligence-Platform) | Default GitHub Pages domain                 |
-| **本地开发 · Local Dev**  | [localhost:3200](http://localhost:3200)                                                                              | `pnpm dev`                                  |
+| Environment · 环境        | URL · 地址                                                                                                   | Description · 说明                          |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
+| **生产环境 · Production** | [**ai.yyc3.fun**](https://ai.yyc3.fun)                                                                       | GitHub Pages via DNS verified custom domain |
+| **GitHub Pages (备用)**   | [yyc-cube.github.io/YYC3-AI-Intelligence-Platform](https://yyc-cube.github.io/YYC3-AI-Intelligence-Platform) | Default GitHub Pages domain                 |
+| **本地开发 · Local Dev**  | [localhost:3200](http://localhost:3200)                                                                      | `pnpm dev`                                  |
 
 ---
 
@@ -253,7 +257,7 @@ YYC³ AI Intelligence Platform 是 **YYC³ Family** 旗下的核心 Web 应用�
 ## 🗂️ Repository Layout · 仓库结构
 
 ```text
-YYC3-AI-App-Intelligence-Platform/
+YYC3-AI-Intelligence-Platform/
 │
 ├── public/
 │   ├── Family-001.png                  ← YYC³ Family 全家福 · README 顶图
@@ -286,8 +290,7 @@ YYC3-AI-App-Intelligence-Platform/
 │   └── accessibility/
 │
 ├── .github/workflows/                  ← CI/CD 自动化流水线
-│   ├── ci-cd.yml                       │   CI/CD: Lint → Test → Build → E2E → LH → Deploy
-│   └── lighthouse.yml                  │   Lighthouse CI: Performance regression guard
+│   └── ci-cd.yml                       │   Lint → Test → Build → E2E → Lighthouse → Deploy
 │
 ├── .husky/pre-commit                   ← Git pre-commit hooks
 │
@@ -379,18 +382,18 @@ public/yyc3-icons/
 
 ### Prerequisites · 环境要求
 
-| Tool · 工具 | Minimum · 最低版本                | Notes · 说明                                       |
-| ----------- | --------------------------------- | -------------------------------------------------- |
-| **Node.js** | `>= 18.0.0`                       | LTS recommended                                    |
-| **pnpm**    | `>= 9`                            | Team-standard package manager (consistent with CI) |
-| **Browser** | Chrome / Edge / Safari (latest 2) | PWA & ESM support required                         |
+| Tool · 工具 | Minimum · 最低版本                | Notes · 说明                                                        |
+| ----------- | --------------------------------- | ------------------------------------------------------------------- |
+| **Node.js** | `>= 20.0.0`                       | CI 使用 Node 22；`pnpm lighthouse:ci` 需要 22.19+（@lhci/cli 0.16） |
+| **pnpm**    | `>= 9`                            | Team-standard package manager (consistent with CI)                  |
+| **Browser** | Chrome / Edge / Safari (latest 2) | PWA & ESM support required                                          |
 
 ### Installation · 安装与运行
 
 ```bash
 # 1. Clone the repository · 克隆仓库
-git clone https://github.com/YYC-Cube/YYC3-AI-App-Intelligence-Platform.git
-cd YYC3-AI-App-Intelligence-Platform
+git clone https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform.git
+cd YYC3-AI-Intelligence-Platform
 
 # 2. Install dependencies · 安装依赖
 pnpm install
@@ -457,7 +460,7 @@ flowchart LR
   C --> D["🎭 E2E Tests<br/><small>Playwright · axe-core</small>"]
   D --> E["⚡ Lighthouse CI<br/><small>Performance regression</small>"]
   E --> F["🏗️ Build<br/><small>Vite production</small>"]
-  F --> G["🚀 Deploy<br/><small>GitHub Pages → neuxs-ai.yyc3.top</small>"]
+  F --> G["🚀 Deploy<br/><small>GitHub Pages → ai.yyc3.fun</small>"]
 ```
 
 ### Quality Gates · 质量关卡
@@ -514,9 +517,9 @@ flowchart LR
 
 ### GitHub Pages Deployment · GitHub Pages 部署
 
-本项目通过 **GitHub Actions** 自动化部署至 **GitHub Pages**，并绑定自定义域名 **`neuxs-ai.yyc3.top`**。
+本项目通过 **GitHub Actions** 自动化部署至 **GitHub Pages**，并绑定自定义域名 **`ai.yyc3.fun`**。
 
-> **English**: This project is automatically deployed to GitHub Pages via GitHub Actions, bound to the custom domain `neuxs-ai.yyc3.top` with DNS verification.
+> **English**: This project is automatically deployed to GitHub Pages via GitHub Actions, bound to the custom domain `ai.yyc3.fun` with DNS verification.
 
 ```mermaid
 flowchart LR
@@ -524,7 +527,7 @@ flowchart LR
   B --> C["🧪 Tests<br/><small>Unit · E2E · A11y · PWA</small>"]
   C --> D["🏗️ Build<br/><small>Vite production</small>"]
   D --> E["🚀 Deploy<br/><small>GitHub Pages</small>"]
-  E --> F["🌐 DNS<br/><small>neuxs-ai.yyc3.top</small>"]
+  E --> F["🌐 DNS<br/><small>ai.yyc3.fun</small>"]
 
   subgraph "CI/CD Pipeline · ci-cd.yml"
     B
@@ -533,7 +536,7 @@ flowchart LR
     E
   end
 
-  subgraph "Quality Guard · lighthouse.yml"
+  subgraph "Quality Guard · ci-cd.yml"
     G["⚡ Lighthouse CI"]
   end
 
@@ -545,7 +548,7 @@ flowchart LR
 | Aspect · 方面                   | Detail · 详情                                                  |
 | ------------------------------- | -------------------------------------------------------------- |
 | **Platform · 平台**             | GitHub Pages                                                   |
-| **Custom Domain · 自定义域名**  | [`neuxs-ai.yyc3.top`](https://neuxs-ai.yyc3.top)               |
+| **Custom Domain · 自定义域名**  | [`ai.yyc3.fun`](https://ai.yyc3.fun)                           |
 | **DNS Verification · DNS 认证** | Verified via CNAME record                                      |
 | **CI/CD Workflow · 工作流**     | [`.github/workflows/ci-cd.yml`](./.github/workflows/ci-cd.yml) |
 | **Deploy Trigger · 部署触发**   | Push to `main` branch                                          |
@@ -620,13 +623,13 @@ git push origin feat/your-feature
 
 ## 📮 Contact · 联系与支持
 
-| Channel · 渠道         | Link · 链接                                                                                                               |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **Team · 团队**        | YYC³ Team · YanYuCloudCube                                                                                                |
-| **Email · 邮箱**       | [admin@0379.email](mailto:admin@0379.email)                                                                               |
-| **GitHub Issues**      | [YYC-Cube/YYC3-AI-App-Intelligence-Platform/issues](https://github.com/YYC-Cube/YYC3-AI-App-Intelligence-Platform/issues) |
-| **GitHub Discussions** | [Discussions](https://github.com/YYC-Cube/YYC3-AI-App-Intelligence-Platform/discussions)                                  |
-| **Website · 官网**     | [neuxs-ai.yyc3.top](https://neuxs-ai.yyc3.top)                                                                            |
+| Channel · 渠道         | Link · 链接                                                                                                       |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **Team · 团队**        | YYC³ Team · YanYuCloudCube                                                                                        |
+| **Email · 邮箱**       | [admin@0379.email](mailto:admin@0379.email)                                                                       |
+| **GitHub Issues**      | [YYC-Cube/YYC3-AI-Intelligence-Platform/issues](https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform/issues) |
+| **GitHub Discussions** | [Discussions](https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform/discussions)                              |
+| **Website · 官网**     | [ai.yyc3.fun](https://ai.yyc3.fun)                                                                                |
 
 ---
 
@@ -644,7 +647,7 @@ git push origin feat/your-feature
 
 <p align="center">
   <br/>
-  <a href="https://neuxs-ai.yyc3.top" target="_blank" rel="noopener noreferrer">
+  <a href="https://ai.yyc3.fun" target="_blank" rel="noopener noreferrer">
     <img src="./public/yyc3-icons/favicon/favicon-96x96.png" width="48" height="48" alt="YYC³" style="border-radius: 12px;" />
   </a>
   <br/>

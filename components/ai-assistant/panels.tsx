@@ -770,8 +770,8 @@ export function SettingsPanel(p: PanelProps) {
             type={p.showApiKey ? 'text' : 'password'}
             value={p.localApiKey}
             onChange={(e) => {
+              // 仅保留在内存中：不调用 persist，避免 Key 明文落盘到 localStorage
               p.setLocalApiKey(e.target.value);
-              p.persist('ai_assistant_api_key', e.target.value);
             }}
             placeholder="sk-xxxxxxxxxxxxxxxxxxxxxxxx"
             className="w-full px-3 py-2.5 rounded-xl bg-[rgba(0,40,80,0.4)] border border-[rgba(0,180,255,0.15)] text-[#e0f0ff] placeholder-[rgba(0,212,255,0.2)] focus:outline-none focus:border-[rgba(0,212,255,0.4)]"

@@ -15,11 +15,11 @@
 
 ```bash
 # 1. Fork 仓库后克隆
-git clone https://github.com/`<YOUR_USERNAME>`/YYC3-AI-App-Intelligence-Platform.git
-cd YYC3-AI-App-Intelligence-Platform
+git clone https://github.com/`<YOUR_USERNAME>`/YYC3-AI-Intelligence-Platform.git
+cd YYC3-AI-Intelligence-Platform
 
 # 2. 添加上游
-git remote add upstream https://github.com/YYC-Cube/YYC3-AI-App-Intelligence-Platform.git
+git remote add upstream https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform.git
 
 # 3. 安装依赖（推荐 pnpm，与 CI 一致）
 pnpm install
@@ -162,7 +162,7 @@ Closes #xxx
 
 - Maintainers：YYC³ Team
 - Email：[admin@0379.email](mailto:admin@0379.email)
-- Discussions：[GitHub Discussions](https://github.com/YYC-Cube/YYC3-AI-App-Intelligence-Platform/discussions)
+- Discussions：[GitHub Discussions](https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform/discussions)
 
 ---
 

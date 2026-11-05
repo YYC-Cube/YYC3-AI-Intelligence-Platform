@@ -31,9 +31,16 @@ import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 interface PersonalizedDashboardProps {
-  appData: AppData;
+  appData?: AppData | null;
   onNavigate: (module: string, subPage?: string) => void;
 }
+
+const FALLBACK_APP: AppData = {
+  name: 'Your App',
+  category: 'Productivity',
+  subcategory: 'Task Management',
+  rating: 4.5,
+};
 
 const downloadTrend = [
   { month: 'Jan', downloads: 38200, revenue: 9800 },
@@ -135,6 +142,7 @@ const insights = [
 ];
 
 export function PersonalizedDashboard({ appData, onNavigate }: PersonalizedDashboardProps) {
+  const app = appData ?? FALLBACK_APP;
   const [selectedPeriod, setSelectedPeriod] = useState('6m');
 
   const getMetricChange = (current: number, previous: number) => {
@@ -170,8 +178,8 @@ export function PersonalizedDashboard({ appData, onNavigate }: PersonalizedDashb
           <div>
             <h1 className="text-2xl font-semibold mb-2">Welcome back! 👋</h1>
             <p className="text-muted-foreground">
-              Here's how <span className="font-medium">{String(appData.name)}</span> is performing
-              in the {String(appData.subcategory)} market
+              Here's how <span className="font-medium">{String(app.name)}</span> is performing in
+              the {String(app.subcategory)} market
             </p>
           </div>
           <div className="text-right">
@@ -237,7 +245,7 @@ export function PersonalizedDashboard({ appData, onNavigate }: PersonalizedDashb
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">App Store Rating</p>
-                <p className="text-2xl font-semibold">{appData.rating}</p>
+                <p className="text-2xl font-semibold">{app.rating}</p>
                 <div className="flex items-center mt-1">
                   {ratingChange.isPositive ? (
                     <TrendingUp className="w-3 h-3 text-green-500 mr-1" />

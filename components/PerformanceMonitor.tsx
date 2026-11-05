@@ -81,7 +81,7 @@ export function PerformanceMonitor({ enabled = true, onMetricsUpdate }: Performa
       observer.observe({ type: 'first-input', buffered: true });
       observer.observe({ type: 'layout-shift', buffered: true });
       observer.observe({ type: 'navigation', buffered: true });
-    } catch (e) {
+    } catch {
       logger.warn('PerformanceObserver not fully supported');
     }
 

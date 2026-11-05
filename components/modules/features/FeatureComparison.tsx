@@ -10,9 +10,6 @@ import {
   RefreshCw,
   Download,
   Plus,
-  CheckCircle,
-  X,
-  AlertTriangle,
   TrendingUp,
   Lightbulb,
   Target,
@@ -233,19 +230,6 @@ export function FeatureComparison({
 }: FeatureComparisonProps) {
   const [selectedApps, setSelectedApps] = useState(taskManagementApps);
   const [activeTab, setActiveTab] = useState('matrix');
-
-  const _getFeatureIcon = (status: string) => {
-    switch (status) {
-      case 'full':
-        return <CheckCircle className="w-4 h-4 text-green-500" />;
-      case 'partial':
-        return <AlertTriangle className="w-4 h-4 text-yellow-500" />;
-      case 'none':
-        return <X className="w-4 h-4 text-red-500" />;
-      default:
-        return <span className="text-sm font-medium">{status}</span>;
-    }
-  };
 
   const getFeatureSymbol = (status: string) => {
     switch (status) {

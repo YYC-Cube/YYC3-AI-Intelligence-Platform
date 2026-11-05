@@ -1,36 +1,105 @@
-import { useState } from 'react';
+import { Suspense, lazy, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ClientSidebar } from './components/ClientSidebar';
 import { FloatingAssistant } from './components/FloatingAssistant';
 import { Header } from './components/Header';
 import { KarbonWelcomeCheck } from './components/KarbonWelcomeCheck';
-import { ABTestingModule } from './components/modules/ABTestingModule';
-import { ASOModule } from './components/modules/ASOModule';
-import { AssistantModule } from './components/modules/AssistantModule';
-import { CreativeModule } from './components/modules/CreativeModule';
-import { CrossAnalysisModule } from './components/modules/CrossAnalysisModule';
-import { ExplorerModule } from './components/modules/ExplorerModule';
-import { FeaturesModule } from './components/modules/FeaturesModule';
-import { FinancingModule } from './components/modules/FinancingModule';
-import { HumanAICollaborationModule } from './components/modules/HumanAICollaborationModule';
-import { IdeasModule } from './components/modules/IdeasModule';
-import { MarketsModule } from './components/modules/MarketsModule';
-import { PaywallModule } from './components/modules/PaywallModule';
-import { PricingModule } from './components/modules/PricingModule';
-import { ReviewsModule } from './components/modules/ReviewsModule';
-import { SupportModule } from './components/modules/SupportModule';
-import { TrendsModule } from './components/modules/TrendsModule';
-import { UIUXModule } from './components/modules/UIUXModule';
-import { PersonalizedDashboard } from './components/PersonalizedDashboard';
+import { isOnboardingDone, markOnboardingDone } from './utils/session';
 import type { AppData, WelcomeContext } from './types';
 
+/**
+ * 业务模块按需加载：避免 ClientApp 单 chunk 过大，
+ * 也让新增模块只需在注册表 + 路由分支中登记，不再静态引入全部依赖。
+ */
+const PersonalizedDashboard = lazy(() =>
+  import('./components/PersonalizedDashboard').then((m) => ({ default: m.PersonalizedDashboard }))
+);
+const ExplorerModule = lazy(() =>
+  import('./components/modules/ExplorerModule').then((m) => ({ default: m.ExplorerModule }))
+);
+const TrendsModule = lazy(() =>
+  import('./components/modules/TrendsModule').then((m) => ({ default: m.TrendsModule }))
+);
+const CreativeModule = lazy(() =>
+  import('./components/modules/CreativeModule').then((m) => ({ default: m.CreativeModule }))
+);
+const ASOModule = lazy(() =>
+  import('./components/modules/ASOModule').then((m) => ({ default: m.ASOModule }))
+);
+const PaywallModule = lazy(() =>
+  import('./components/modules/PaywallModule').then((m) => ({ default: m.PaywallModule }))
+);
+const ReviewsModule = lazy(() =>
+  import('./components/modules/ReviewsModule').then((m) => ({ default: m.ReviewsModule }))
+);
+const CrossAnalysisModule = lazy(() =>
+  import('./components/modules/CrossAnalysisModule').then((m) => ({
+    default: m.CrossAnalysisModule,
+  }))
+);
+const ABTestingModule = lazy(() =>
+  import('./components/modules/ABTestingModule').then((m) => ({ default: m.ABTestingModule }))
+);
+const HumanAICollaborationModule = lazy(() =>
+  import('./components/modules/HumanAICollaborationModule').then((m) => ({
+    default: m.HumanAICollaborationModule,
+  }))
+);
+const FinancingModule = lazy(() =>
+  import('./components/modules/FinancingModule').then((m) => ({ default: m.FinancingModule }))
+);
+const PricingModule = lazy(() =>
+  import('./components/modules/PricingModule').then((m) => ({ default: m.PricingModule }))
+);
+const UIUXModule = lazy(() =>
+  import('./components/modules/UIUXModule').then((m) => ({ default: m.UIUXModule }))
+);
+const MarketsModule = lazy(() =>
+  import('./components/modules/MarketsModule').then((m) => ({ default: m.MarketsModule }))
+);
+const FeaturesModule = lazy(() =>
+  import('./components/modules/FeaturesModule').then((m) => ({ default: m.FeaturesModule }))
+);
+const IdeasModule = lazy(() =>
+  import('./components/modules/IdeasModule').then((m) => ({ default: m.IdeasModule }))
+);
+const AssistantModule = lazy(() =>
+  import('./components/modules/AssistantModule').then((m) => ({ default: m.AssistantModule }))
+);
+const SupportModule = lazy(() =>
+  import('./components/modules/SupportModule').then((m) => ({ default: m.SupportModule }))
+);
+
+const MODULE_LOADING = (
+  <div className="flex items-center justify-center h-64">
+    <div className="flex flex-col items-center gap-3">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+      <span className="text-slate-500 text-sm">加载模块中...</span>
+    </div>
+  </div>
+);
+
 export default function ClientApp() {
-  const [activeModule, setActiveModule] = useState('');
-  const [hasCompletedWelcome, setHasCompletedWelcome] = useState(false);
-  const [subPage, setSubPage] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // 路由即状态：/client/:module/:subPage，刷新与分享均可还原
+  const segments = location.pathname
+    .replace(/^\/client\/?/, '')
+    .split('/')
+    .filter(Boolean);
+  const activeModule = segments[0] || 'dashboard';
+  const subPage = segments[1] || '';
+
+  const [hasCompletedWelcome, setHasCompletedWelcome] = useState(() => isOnboardingDone());
   const [selectedApp, setSelectedApp] = useState<AppData | null>(null);
   const [showFloatingAssistant, setShowFloatingAssistant] = useState(false);
   const [appContext, setAppContext] = useState<Record<string, unknown> | null>(null);
   const [welcomeContext, setWelcomeContext] = useState<WelcomeContext | null>(null);
+
+  const setActiveModule = (moduleId: string) => {
+    navigate(`/client/${moduleId}`);
+  };
 
   const getModuleInfo = (moduleId: string, subPageId?: string) => {
     const moduleMap = {
@@ -264,10 +333,10 @@ export default function ClientApp() {
   };
 
   const handleSubPageChange = (page: string, data?: unknown) => {
-    setSubPage(page);
     if (data) {
       setSelectedApp(data as AppData);
     }
+    navigate(page ? `/client/${activeModule}/${page}` : `/client/${activeModule}`);
   };
 
   const handleAssistantToggle = () => {
@@ -278,9 +347,9 @@ export default function ClientApp() {
   };
 
   const handleWelcomeComplete = (context: WelcomeContext) => {
-    setHasCompletedWelcome(true);
-    setActiveModule('dashboard');
+    markOnboardingDone();
     setWelcomeContext(context);
+    setHasCompletedWelcome(true);
   };
 
   if (!hasCompletedWelcome) {
@@ -360,7 +429,9 @@ export default function ClientApp() {
       <div className="flex-1 flex flex-col">
         <Header title={moduleInfo.title} subtitle={moduleInfo.subtitle} />
 
-        <main className="flex-1 p-6">{renderModule()}</main>
+        <main className="flex-1 p-6">
+          <Suspense fallback={MODULE_LOADING}>{renderModule()}</Suspense>
+        </main>
       </div>
 
       {/* Floating Assistant - only show if not in assistant module */}

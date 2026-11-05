@@ -223,10 +223,6 @@ export function CrossAnalysisMain({
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
-  const _getModuleScore = (app: AppData, module: string) => {
-    return (app.modules as Record<string, number>)?.[module] || 0;
-  };
-
   const getScoreColor = (score: number) => {
     if (score >= 90) {
       return 'text-green-600';

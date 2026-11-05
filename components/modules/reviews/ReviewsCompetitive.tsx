@@ -175,19 +175,6 @@ const competitiveOpportunities = [
 export function ReviewsCompetitive({ onBack }: ReviewsCompetitiveProps) {
   const [selectedCategory, setSelectedCategory] = useState('productivity');
 
-  const _getPositionColor = (position: string) => {
-    switch (position) {
-      case 'current':
-        return 'text-blue-600 bg-blue-50';
-      case 'leader':
-        return 'text-green-600 bg-green-50';
-      case 'competitor':
-        return 'text-gray-600 bg-gray-50';
-      default:
-        return 'text-gray-600 bg-gray-50';
-    }
-  };
-
   const getSentimentColor = (sentiment: number) => {
     if (sentiment >= 75) {
       return 'text-green-600';

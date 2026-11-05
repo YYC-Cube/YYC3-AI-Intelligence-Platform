@@ -1,38 +1,44 @@
 # 🚀 KARBON PLATFORM STATUS & ROADMAP
 
+> ⚠️ **成熟度声明（2026-11-05 校准）**
+> 本仓库当前为 **可交互 Demo / 原型**：19 个业务模块的 UI 与交互已完整实现，但
+> **没有后端、没有 API 调用、没有鉴权体系，全部业务数据为内置 Mock**。
+> 因此下文所有 "100% Complete" 均指 **界面与交互完成度**，不代表生产可用性。
+> 生产化所需能力见 `docs/audits/YYC3-首次技术调研报告-2026-11-05.md` 的短/中/长期排期。
+
 ## ✅ CURRENT IMPLEMENTATION STATUS
 
-### 🏗️ CORE SYSTEMS (100% Complete)
+### 🏗️ CORE SYSTEMS（UI 100% · 数据 Mock）
 
 - **Sales Engine** - Lead generation, pipeline management, revenue forecasting
 - **Learning Engine** - Data ingestion, ML models, pattern recognition, feedback loops
 
-### 📊 ANALYTICS HUB (100% Complete)
+### 📊 ANALYTICS HUB （UI 100% · 数据 Mock）
 
 - **Dashboard** - Professional enterprise dashboard with KPIs and workflows
 - **Explorer** - App intelligence with detailed analysis and AI insights
 - **Trends** - Market trend detection and forecasting
 - **Cross Analysis** - Unified insights across all modules
 
-### 🧠 INTELLIGENCE MODULES (100% Complete)
+### 🧠 INTELLIGENCE MODULES （UI 100% · 数据 Mock）
 
 - **Creative Analysis** - Visual intelligence and design optimization
 - **ASO Optimization** - Keyword intelligence and app store optimization
 - **Paywall Analysis** - Monetization strategies and revenue optimization
 - **Reviews Intelligence** - Sentiment analysis and user feedback processing
 
-### 📈 STRATEGY & GROWTH (100% Complete)
+### 📈 STRATEGY & GROWTH （UI 100% · 数据 Mock）
 
 - **Untapped Markets** - Global market opportunities and entry strategies
 - **Feature Intelligence** - Competitive feature analysis and roadmap prioritization
 - **Pricing Intelligence** - Revenue optimization and pricing strategies
 
-### 🤖 AI & TOOLS (100% Complete)
+### 🤖 AI & TOOLS （UI 100% · 数据 Mock）
 
 - **Ideas Generator** - AI-powered app idea generation and market gap analysis
 - **AI Assistant** - Conversational analytics and intelligent recommendations
 
-### 🔄 WORKFLOW SYSTEM (100% Complete)
+### 🔄 WORKFLOW SYSTEM （UI 100% · 数据 Mock）
 
 - **App Intelligence Workflow** (11 steps)
 - **Market Entry Strategy Workflow** (11 steps)
@@ -45,7 +51,7 @@
 ### ✅ COMPLETED SYSTEMS
 
 - **Frontend Framework**: React + TypeScript
-- **Styling**: Tailwind CSS V4 with professional design system
+- **Styling**: Tailwind CSS 3.4 with professional design system
 - **Component Library**: Comprehensive shadcn/ui integration
 - **Data Visualization**: Recharts for interactive charts and analytics
 - **Navigation**: Advanced sidebar with module grouping and workflow tracking
@@ -191,8 +197,11 @@
 
 ## 🏁 CONCLUSION
 
-**Karbon is a complete, production-ready MVP** with enterprise-grade architecture and professional presentation. The platform successfully delivers on the "AI intelligence for app developers" vision with comprehensive analytics, workflows, and learning systems.
+**Karbon is a demo-complete MVP prototype** with a professional, enterprise-grade UI and a
+well-structured front-end codebase. It delivers the "AI intelligence for app developers"
+vision at the **interaction and presentation** level; production readiness still requires
+backend integration, authentication, real data pipelines and observability.
 
-**Recommended Focus**: Complete the Learning Engine sub-modules to finalize the AI system, then move to backend integration for live data and user management.
+**Recommended Focus**: 完成服务端接入（鉴权 + 真实数据源 + AI 服务端代理），并把 Mock 数据迁移到 MSW，再进入生产发布评审。
 
 **Market Position**: Ready for investor demos, user testing, and early customer development with the current feature set.

@@ -1,7 +1,26 @@
 import react from '@vitejs/plugin-react';
+import fs from 'fs';
 import path from 'path';
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
+
+/**
+ * GitHub Pages 为纯静态托管，不支持 SPA history fallback。
+ * 构建后复制 index.html 为 404.html，保证 /client、/enterprise 等深链刷新可用。
+ */
+function spaFallbackPlugin(): Plugin {
+  return {
+    name: 'yyc3-spa-404-fallback',
+    apply: 'build',
+    closeBundle() {
+      const distDir = path.resolve(__dirname, 'dist');
+      const indexFile = path.join(distDir, 'index.html');
+      if (fs.existsSync(indexFile)) {
+        fs.copyFileSync(indexFile, path.join(distDir, '404.html'));
+      }
+    },
+  };
+}
 
 export default defineConfig({
   esbuild: {
@@ -9,15 +28,11 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    spaFallbackPlugin(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: [
-        'favicon.ico',
-        'yyc3-icons/**/*.png',
-        'yyc3-icons/**/*.svg',
-        'yyc3-icons/**/*.webp',
-        'yyc3-icons/favicon/*.ico',
-      ],
+      // 仅预缓存应用外壳；图片走 runtimeCaching，避免首装下载 ~5MB 静态图
+      includeAssets: ['favicon.ico'],
       manifest: {
         name: 'YYC³ AI Intelligence Platform',
         short_name: 'YYC³ AI',
@@ -55,12 +70,12 @@ export default defineConfig({
           { src: '/yyc3-icons/webp/icon-512x512.webp', sizes: '512x512', type: 'image/webp' },
         ],
         shortcuts: [
-          { name: 'Dashboard', url: '/dashboard', description: 'Go to main dashboard' },
-          { name: 'Analytics', url: '/analytics', description: 'View analytics reports' },
+          { name: 'Dashboard', url: '/client', description: 'Go to main dashboard' },
+          { name: 'ASO', url: '/client/aso', description: 'Open ASO optimization' },
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff2}'],
+        globPatterns: ['**/*.{js,css,html,ico,woff2}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/api\./i,
@@ -85,6 +100,20 @@ export default defineConfig({
               expiration: {
                 maxEntries: 10,
                 maxAgeSeconds: 60 * 60 * 24 * 365,
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
+          {
+            urlPattern: /^https:\/\/images\.unsplash\.com\//i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'unsplash-images',
+              expiration: {
+                maxEntries: 60,
+                maxAgeSeconds: 60 * 60 * 24 * 30,
               },
               cacheableResponse: {
                 statuses: [0, 200],
@@ -142,29 +171,40 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    // 生产默认不产出 sourcemap：dist 会直传 GitHub Pages，公开 .map 等同于公开源码。
+    // 需要排查线上问题时用 `SOURCE_MAP=true pnpm build` 本地构建。
+    sourcemap: process.env.SOURCE_MAP === 'true' ? true : false,
     minify: 'esbuild',
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'react-vendor';
-            }
-            if (id.includes('framer-motion') || id.includes('lucide-react')) {
-              return 'ui-vendor';
-            }
-            if (id.includes('recharts')) {
-              return 'charts-vendor';
-            }
-            if (id.includes('date-fns')) {
-              return 'date-utils';
-            }
-            if (id.includes('sonner') || id.includes('tailwind-merge')) {
-              return 'ui-utils';
-            }
-            return 'vendor';
+          if (!id.includes('node_modules')) {
+            return;
           }
+          // 精确分包：避免 `includes('react')` 把 react-router / react-hook-form /
+          // @radix-ui/react-* 全部吸入同一 chunk（曾导致 react-vendor 728KB + 循环依赖）
+          if (/node_modules\/(react|react-dom|scheduler)\//.test(id)) {
+            return 'react-core';
+          }
+          if (/node_modules\/(react-router|react-router-dom|@remix-run)\//.test(id)) {
+            return 'router-vendor';
+          }
+          if (/node_modules\/@radix-ui\//.test(id)) {
+            return 'radix-vendor';
+          }
+          if (/node_modules\/(recharts|d3-[a-z-]+|victory-[a-z-]+)\//.test(id)) {
+            return 'charts-vendor';
+          }
+          if (/node_modules\/(framer-motion|motion-dom|motion-utils)\//.test(id)) {
+            return 'motion-vendor';
+          }
+          if (/node_modules\/(react-hook-form|@hookform)\//.test(id)) {
+            return 'forms-vendor';
+          }
+          if (/node_modules\/(date-fns|dayjs)\//.test(id)) {
+            return 'date-utils';
+          }
+          return 'vendor';
         },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',

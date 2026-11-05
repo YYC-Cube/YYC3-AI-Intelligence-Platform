@@ -65,8 +65,8 @@
 
 ## 链接
 
-[Unreleased]: https://github.com/YYC-Cube/YYC3-AI-App-Intelligence-Platform/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/YYC-Cube/YYC3-AI-App-Intelligence-Platform/releases/tag/v1.0.0
+[Unreleased]: https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/YYC-Cube/YYC3-AI-Intelligence-Platform/releases/tag/v1.0.0
 
 ---
 

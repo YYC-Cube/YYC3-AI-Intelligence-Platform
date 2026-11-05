@@ -149,16 +149,6 @@ export function PaywallDetail({ app, onBack }: PaywallDetailProps) {
     monthlyConversionRate: 8.1,
   };
 
-  const _getScoreColor = (score: number) => {
-    if (score >= 85) {
-      return 'text-green-600 bg-green-50';
-    }
-    if (score >= 70) {
-      return 'text-yellow-600 bg-yellow-50';
-    }
-    return 'text-red-600 bg-red-50';
-  };
-
   const getPriorityColor = (priority: string) => {
     if (priority.includes('HIGH')) {
       return 'bg-red-50 text-red-600';

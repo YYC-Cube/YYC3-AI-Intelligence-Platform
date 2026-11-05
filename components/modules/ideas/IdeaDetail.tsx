@@ -68,16 +68,6 @@ export function IdeaDetail({ idea, onBack }: IdeaDetailProps) {
     return 'text-red-600';
   };
 
-  const _getProgressColor = (score: number) => {
-    if (score >= 80) {
-      return 'bg-green-500';
-    }
-    if (score >= 65) {
-      return 'bg-yellow-500';
-    }
-    return 'bg-red-500';
-  };
-
   return (
     <div className="space-y-6">
       {/* Header */}

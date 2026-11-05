@@ -167,19 +167,6 @@ export function ReviewsAnalysis({
     analysisScore: 87,
   };
 
-  const _getSentimentIcon = (type: string) => {
-    switch (type) {
-      case 'positive':
-        return <Smile className="w-5 h-5 text-green-500" />;
-      case 'neutral':
-        return <Meh className="w-5 h-5 text-yellow-500" />;
-      case 'negative':
-        return <Frown className="w-5 h-5 text-red-500" />;
-      default:
-        return null;
-    }
-  };
-
   const getGrowthColor = (growth: string) => {
     if (growth.startsWith('+')) {
       return 'text-red-600';

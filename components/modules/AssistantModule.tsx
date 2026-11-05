@@ -18,6 +18,7 @@ import {
   ThumbsUp,
   ThumbsDown,
 } from 'lucide-react';
+import { formatMessageContent } from '../../utils/message-format';
 
 interface Message {
   id: string;
@@ -174,18 +175,6 @@ export function AssistantModule() {
     setInputValue(`Help me with ${action.toLowerCase()}`);
   };
 
-  const formatMessageContent = (content: string) => {
-    // Basic markdown-like formatting
-    return content
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/(\d+%)/g, '<span class="font-medium text-green-600">$1</span>')
-      .replace(/(📈|📊|💰|🔗|🎨|🌙|📋|👥|🚀|📱|⚡)/g, '<span class="text-lg">$1</span>')
-      .split('\n')
-      .map((line) => line.trim())
-      .filter((line) => line.length > 0)
-      .join('<br/>');
-  };
-
   return (
     <div className="h-[calc(100vh-12rem)] flex flex-col">
       {/* Header */}
@@ -255,10 +244,10 @@ export function AssistantModule() {
                         <div
                           className={`${message.type === 'assistant' ? 'leading-relaxed' : ''}`}
                           dangerouslySetInnerHTML={{
-                            __html:
+                            __html: formatMessageContent(
+                              message.content,
                               message.type === 'assistant'
-                                ? formatMessageContent(message.content)
-                                : message.content,
+                            ),
                           }}
                         />
                       </div>

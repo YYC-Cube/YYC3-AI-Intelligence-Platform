@@ -158,10 +158,6 @@ export function PaywallMain({ onAppSelect, onComparisonSelect }: PaywallMainProp
     return 'text-red-600 bg-red-50';
   };
 
-  const _getTrendIcon = (_trend: string) => {
-    return <TrendingUp className="w-4 h-4 text-green-500" />;
-  };
-
   return (
     <div className="space-y-6">
       {/* Header Stats */}

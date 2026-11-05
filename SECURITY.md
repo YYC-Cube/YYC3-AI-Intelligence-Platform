@@ -27,7 +27,7 @@
 
 - 📧 Email：**[admin@0379.email](mailto:admin@0379.email)**
 - 📧 抄送：`security@yyc3.dev`（如可用）
-- 📌 主题前缀：`[SECURITY] YYC3-AI-App-Intelligence-Platform — <简述>`
+- 📌 主题前缀：`[SECURITY] YYC3-AI-Intelligence-Platform — <简述>`
 
 ### 报告模板
 

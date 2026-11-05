@@ -27,6 +27,8 @@ interface AppData {
   reviews: number;
 }
 
+const STORE_URL_PATTERN = /^https:\/\/(apps\.apple\.com|play\.google\.com)\/.+/i;
+
 const appCategories = [
   {
     id: 'lifestyle',
@@ -62,8 +64,16 @@ export function LoginFlow({ onComplete }: LoginFlowProps) {
   const [detectedApp, setDetectedApp] = useState<AppData | null>(null);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedSubcategory, setSelectedSubcategory] = useState('');
+  const [urlError, setUrlError] = useState('');
 
   const handleAnalyzeApp = async () => {
+    if (!STORE_URL_PATTERN.test(appStoreUrl.trim())) {
+      setUrlError(
+        '请输入合法的应用商店链接（https://apps.apple.com/... 或 https://play.google.com/...）'
+      );
+      return;
+    }
+    setUrlError('');
     setIsAnalyzing(true);
 
     // Simulate app analysis based on URL
@@ -168,9 +178,21 @@ export function LoginFlow({ onComplete }: LoginFlowProps) {
                       id="appstore-url"
                       placeholder="https://apps.apple.com/app/your-app/id..."
                       value={appStoreUrl}
-                      onChange={(e) => setAppStoreUrl(e.target.value)}
+                      onChange={(e) => {
+                        setAppStoreUrl(e.target.value);
+                        if (urlError) {
+                          setUrlError('');
+                        }
+                      }}
                       className="mt-1"
+                      aria-invalid={urlError ? true : undefined}
+                      aria-describedby={urlError ? 'appstore-url-error' : undefined}
                     />
+                    {urlError && (
+                      <p id="appstore-url-error" role="alert" className="mt-1 text-sm text-red-600">
+                        {urlError}
+                      </p>
+                    )}
                   </div>
 
                   <div>

@@ -106,19 +106,6 @@ export function CrossAnalysisCompetitive({ onBack, onAppSelect }: CrossAnalysisC
     return 'text-red-600';
   };
 
-  const _getPositionColor = (position: string) => {
-    switch (position) {
-      case 'current':
-        return 'text-blue-600 bg-blue-50';
-      case 'leader':
-        return 'text-green-600 bg-green-50';
-      case 'competitor':
-        return 'text-gray-600 bg-gray-50';
-      default:
-        return 'text-gray-600 bg-gray-50';
-    }
-  };
-
   return (
     <div className="space-y-6">
       {/* Header */}

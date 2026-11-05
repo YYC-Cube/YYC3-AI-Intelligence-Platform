@@ -72,12 +72,15 @@ export function AiAssistant({
 
   // ---- Settings ----
   const availableModels = externalModels ?? DEFAULT_MODELS;
+  // 安全约束：API Key 仅保存在内存中，不写入 localStorage（避免被同源 XSS 直接窃取）。
+  // 同时清理历史版本遗留的明文 Key。
   const [localApiKey, setLocalApiKey] = useState(() => {
     try {
-      return localStorage.getItem('yyc3_ai_assistant_api_key') ?? externalApiKey;
+      localStorage.removeItem('yyc3_ai_assistant_api_key');
     } catch {
-      return externalApiKey;
+      /* 隐私模式下忽略 */
     }
+    return externalApiKey;
   });
   const [localModel, setLocalModel] = useState(() => {
     try {
